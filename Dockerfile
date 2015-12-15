@@ -1,6 +1,10 @@
 FROM node:0.10
-MAINTAINER "inem0o <leo@cuneaz.fr>"
+MAINTAINER DJ Enriquez <dj.enriquez@infospace.com>
 
 RUN npm install --global phantomjs phantomas
 
-ENTRYPOINT ["/usr/local/bin/phantomas"]
+ADD ./scripts/start.sh /home/
+
+RUN chmod +x /home/start.sh
+
+ENTRYPOINT ["/bin/bash","/home/start.sh"]
